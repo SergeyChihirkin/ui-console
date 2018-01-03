@@ -1,21 +1,31 @@
 package console.state;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainState extends AbstractState {
+
+    private Map<Integer, AbstractState> childStates = new HashMap<>();
+
+    public MainState() {
+        childStates.put(1, new FirstState());
+        childStates.put(2, new SecondState());
+    }
+
     @Override
     protected void runAction(int action) {
-        switch (action) {
-            case 1:
-                System.out.println("Hello world!");
-                break;
-            case 2:
-                break;
+        AbstractState state = childStates.get(action);
+        if (state != null) {
+            state.run();
+        } else {
+            System.err.println("No state configured for selected action :(");
         }
     }
 
     @Override
     protected int printMainActions() {
-        System.out.println(" 1) Print \"Hello world!\"");
-        System.out.println(" 2) Do nothing");
+        System.out.println(" 1) First state");
+        System.out.println(" 2) Second state");
         return 2;
     }
 
