@@ -1,9 +1,13 @@
 package console.state;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import java.util.function.Function;
 
 public abstract class AbstractState {
+    protected static final String DATE_TIME_INPUT_PATTERN = "yyyy-MM-dd HH:mm";
+
     private static Scanner scanner = new Scanner(System.in);
     
     public void run() {
@@ -51,6 +55,14 @@ public abstract class AbstractState {
 
     protected double readDoubleInput(String prefix) {
         return readInput(prefix, Double::parseDouble);
+    }
+
+    protected LocalDateTime readDateTimeInput(String prefix) {
+        return readInput(prefix, s -> LocalDateTime.parse(s, DateTimeFormatter.ofPattern(DATE_TIME_INPUT_PATTERN)));
+    }
+
+    protected String formatDateTime(LocalDateTime dt) {
+        return DateTimeFormatter.ofPattern(DATE_TIME_INPUT_PATTERN).format(dt);
     }
 
     protected abstract void printDefaultInformation();

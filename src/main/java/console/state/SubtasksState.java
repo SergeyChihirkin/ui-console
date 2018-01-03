@@ -1,5 +1,7 @@
 package console.state;
 
+import java.time.LocalDateTime;
+
 public class SubtasksState extends AbstractState {
     @Override
     protected void printDefaultInformation() {
@@ -8,7 +10,7 @@ public class SubtasksState extends AbstractState {
 
     @Override
     protected int printMainActions() {
-        System.out.println(" 1) Launch first subtask");
+        System.out.println(" 1) Print date value");
         System.out.println(" 2) Print double value");
         return 2;
     }
@@ -17,7 +19,7 @@ public class SubtasksState extends AbstractState {
     protected void runAction(int action) {
         switch (action) {
             case 1:
-                printFirstSubtask();
+                printDateValue();
                 break;
             case 2:
                 readDoubleValue();
@@ -25,8 +27,11 @@ public class SubtasksState extends AbstractState {
         }
     }
 
-    private void printFirstSubtask() {
-        System.out.println("The first subtask has been launched.");
+    private void printDateValue() {
+        LocalDateTime localDateTime = readDateTimeInput(String.format("Print datetime value: (%s): ",
+                DATE_TIME_INPUT_PATTERN));
+
+        System.out.println(String.format("You have printed: %s", formatDateTime(localDateTime)));
     }
 
     private void readDoubleValue() {
