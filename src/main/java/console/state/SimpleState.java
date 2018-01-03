@@ -1,9 +1,9 @@
 package console.state;
 
-public class SecondState extends AbstractState {
+public class SimpleState extends AbstractState {
     @Override
     protected void printDefaultInformation() {
-        System.out.println("Second state has been launched.");
+        System.out.println("Simple state has been launched.");
     }
 
     @Override

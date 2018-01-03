@@ -8,8 +8,8 @@ public class MainState extends AbstractState {
     private Map<Integer, AbstractState> childStates = new HashMap<>();
 
     public MainState() {
-        childStates.put(1, new FirstState());
-        childStates.put(2, new SecondState());
+        childStates.put(1, new CompositeState());
+        childStates.put(2, new SimpleState());
     }
 
     @Override
@@ -24,8 +24,8 @@ public class MainState extends AbstractState {
 
     @Override
     protected int printMainActions() {
-        System.out.println(" 1) First state");
-        System.out.println(" 2) Second state");
+        System.out.println(" 1) Composite state");
+        System.out.println(" 2) Simple state");
         return 2;
     }
 
