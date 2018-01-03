@@ -9,7 +9,8 @@ public class FirstState extends AbstractState {
     @Override
     protected int printMainActions() {
         System.out.println(" 1) Print \"Hello world!\"");
-        return 1;
+        System.out.println(" 2) Subtasks");
+        return 2;
     }
 
     @Override
@@ -18,9 +19,16 @@ public class FirstState extends AbstractState {
             case 1:
                 printHelloWorld();
                 break;
+            case 2:
+                manageSubtasks();
+                break;
         }
     }
 
+    private void manageSubtasks() {
+        SubtasksState subtasksState = new SubtasksState();
+        subtasksState.run();
+    }
 
     private void printHelloWorld() {
         System.out.println("Hello world!");
