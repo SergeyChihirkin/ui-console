@@ -9,7 +9,7 @@ public class SubtasksState extends AbstractState {
     @Override
     protected int printMainActions() {
         System.out.println(" 1) Launch first subtask");
-        System.out.println(" 2) Launch second subtask");
+        System.out.println(" 2) Print double value");
         return 2;
     }
 
@@ -20,7 +20,7 @@ public class SubtasksState extends AbstractState {
                 printFirstSubtask();
                 break;
             case 2:
-                printSecondSubtask();
+                readDoubleValue();
                 break;
         }
     }
@@ -29,7 +29,10 @@ public class SubtasksState extends AbstractState {
         System.out.println("The first subtask has been launched.");
     }
 
-    private void printSecondSubtask() {
-        System.out.println("The second subtask has been launched.");
+    private void readDoubleValue() {
+        double doubleValue = readDoubleInput("Print double value: ");
+
+        System.out.println(String.format("You have printed: %f", doubleValue));
     }
+
 }

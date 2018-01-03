@@ -49,6 +49,10 @@ public abstract class AbstractState {
         return readInput(prefix, Integer::parseInt);
     }
 
+    protected double readDoubleInput(String prefix) {
+        return readInput(prefix, Double::parseDouble);
+    }
+
     protected abstract void printDefaultInformation();
 
     protected abstract int printMainActions();
